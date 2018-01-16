@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>checked</title>
+    <style>
+        .section {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<form action="" id="form">
+    <div class="section">
+        <input type="checkbox" id="movie" value="movie">
+        <label for="movie"></label>
+        <label for="movie">电影</label>
+    </div>
+    <div class="section">
+        <input type="checkbox" id="book" value="book">
+        <label for="book"></label>
+        <label for="book">看书</label>
+    </div>
+    <div class="section">
+        <input type="checkbox" id="writing" value="writing">
+        <label for="writing"></label>
+        <label for="writing">写作</label>
+    </div>
+    <input type="button" value="checked" id="checked">
+</form>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    // todo 只是 可以获取 复选框中的内容 以方便提交到后台
+    $(function () {
+        $('#checked').on('click', function () {
+            $('input:checkbox').each(function () {
+                // $(ele).get(0) jq对象转化为 js对象
+                // $(ele)[0]     jq对象转化为 js对象
+                // $v = $(v)     js对象转化为 jq对象  v 为 js声明的对象
+                if ($(this).get(0).checked) {
+                    console.log($(this).val());
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

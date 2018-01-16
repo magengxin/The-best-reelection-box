@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义复选框样式 </title>
+    <style>
+        form,
+        input,
+        label {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .section {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            font-size: 0;
+        }
+
+        .section > input {
+            display: none;
+        }
+
+        .section > label {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+        .section > input + label {
+            margin: 5px 6px 5px 0;
+            width: 20px;
+            height: 20px;
+            background: #cfcece;
+            border: 2px solid #cfcece;
+        }
+
+        .section > input:checked + label{
+            background: teal;
+            border: 2px solid #cfcece;
+        }
+    </style>
+</head>
+<body>
+<form action="" id="form">
+    <div class="section">
+        <input type="checkbox" id="movie" value="movie">
+        <label for="movie"></label>
+        <label for="movie">电影</label>
+    </div>
+    <div class="section">
+        <input type="checkbox" id="book" value="book">
+        <label for="book"></label>
+        <label for="book">看书</label>
+    </div>
+    <div class="section">
+        <input type="checkbox" id="writing" value="writing">
+        <label for="writing"></label>
+        <label for="writing">写作</label>
+    </div>
+    <input type="button" value="checked" id="checked">
+</form>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    // todo 自定义 复选框样式
+    $(function () {
+        $('#checked').on('click', function () {
+            $('input:checkbox').each(function () {
+                if ($(this).get(0).checked) {
+                    console.log($(this).val());
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义复选框样式 √</title>
+    <style>
+        form,
+        input,
+        label {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .section {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            font-size: 0;
+        }
+
+        .section > input {
+            display: none;
+        }
+
+        .section > label {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+        .section > input + label {
+            position: relative;
+            margin: 5px 6px 5px 0;
+            width: 20px;
+            height: 20px;
+            background: #cfcece;
+            border: 2px solid #cfcece;
+        }
+
+        .section > input + label:before,
+        .section > input + label:after {
+            position: absolute;
+
+            width: 2px;
+            background: #fff;
+            transform-origin: left top;
+
+            content: '';
+        }
+
+        .section > input + label:before {
+            top: 6px;
+            left: 2px;
+
+            -webkit-transform: rotate(-30deg);
+            -moz-transform: rotate(-30deg);
+            -ms-transform: rotate(-30deg);
+            -o-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+
+        .section > input + label:after {
+            top: 14px;
+            right: 6px;
+            transform: rotate(216deg);
+        }
+
+        .section > input:checked + label {
+            background: teal;
+        }
+
+        .section > input:checked + label:before {
+            -webkit-animation: showLeftCheck .4s forwards;
+            -o-animation: showLeftCheck .4s forwards;
+            animation: showLeftCheck .4s forwards;
+        }
+        .section > input:checked + label:after {
+            -webkit-animation: showRightCheck .4s .2s forwards;
+            -o-animation: showRightCheck .4s .2s forwards;
+            animation: showRightCheck .4s .2s forwards;
+        }
+
+        @keyframes showLeftCheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 8px;
+            }
+        }
+
+        @keyframes showRightCheck {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 14px;
+            }
+        }
+        </style>
+</head>
+<body>
+<form action="" id="form">
+    <div class="section">
+        <input type="checkbox" id="movie" value="movie">
+        <label for="movie"></label>
+        <label for="movie">电影</label>
+    </div>
+    <div class="section">
+        <input type="checkbox" id="book" value="book">
+        <label for="book"></label>
+        <label for="book">看书</label>
+    </div>
+    <div class="section">
+        <input type="checkbox" id="writing" value="writing">
+        <label for="writing"></label>
+        <label for="writing">写作</label>
+    </div>
+    <input type="button" value="checked" id="checked">
+</form>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    // todo 自定义 复选框样式 ' √ '
+    $(function () {
+        $('#checked').on('click', function () {
+            $('input:checkbox').each(function () {
+                if ($(this).get(0).checked) {
+                    console.log($(this).val());
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
